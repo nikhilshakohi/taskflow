@@ -1,0 +1,59 @@
+/* Layout */
+main {
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 10px;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Headings */
+  h1 {
+    font-size: 22px;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+  
+  h2 {
+    font-size: 18px;
+    margin-top: 20px;
+  }
+  
+  /* Task List */
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  li {
+    background: var(--item-background); /* ✅ FIX: Use theme variable */
+    padding: 8px;
+    margin: 5px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 4px;
+  }
+  
+  /* Input & Buttons */
+  input {
+    width: calc(100% - 60px);
+    padding: 6px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  button {
+    padding: 5px 10px;
+    margin-left: 5px;
+    border: none;
+    cursor: pointer;
+    background: #007bff;
+    color: white;
+    border-radius: 4px;
+  }
+  
+  button:hover {
+    background: #0056b3;
+  }
+  

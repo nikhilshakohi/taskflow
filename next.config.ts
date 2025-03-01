@@ -1,7 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  reactStrictMode: true,
+  devIndicators: {
+    buildActivity: false, // ⛔ Disable the loading indicator
+  },
 };
 
 export default nextConfig;
