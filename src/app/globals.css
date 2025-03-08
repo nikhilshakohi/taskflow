@@ -1,14 +1,14 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --item-background: #f7f7f7; /* Default list item background */
+  --item-background: #f7f7f7;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
-    --item-background: #1a1a1a; /* Dark mode list item background */
+    --item-background: #1a1a1a;
   }
 }
 
