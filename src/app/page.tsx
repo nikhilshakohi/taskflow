@@ -7,23 +7,14 @@ export default function Home() {
     current: [] as string[],
     backlog: [] as string[],
     completed: [] as string[],
-    completedCount: 0,
   });
   const [task, setTask] = useState("");
 
   useEffect(() => {
     if (typeof window !== "undefined") {
       const savedTasks = localStorage.getItem("tasks");
-      const savedDate = localStorage.getItem("lastCompletedDate");
-      const today = new Date().toDateString();
-
       if (savedTasks) {
         const parsedTasks = JSON.parse(savedTasks);
-        if (savedDate !== today) {
-          parsedTasks.completed = [];
-          parsedTasks.completedCount = 0;
-          localStorage.setItem("lastCompletedDate", today);
-        }
         setTasks(parsedTasks);
       }
     }
@@ -43,7 +34,11 @@ export default function Home() {
     }
   };
 
-  const moveTask = (from: keyof typeof tasks, to: keyof typeof tasks, index: number) => {
+  const moveTask = (
+    from: keyof typeof tasks,
+    to: keyof typeof tasks,
+    index: number
+  ) => {
     if (!Array.isArray(tasks[from]) || !Array.isArray(tasks[to])) return;
     updateTasks({
       [from]: (tasks[from] as string[]).filter((_, i) => i !== index),
@@ -55,32 +50,57 @@ export default function Home() {
     updateTasks({
       current: tasks.current.filter((_, i) => i !== index),
       completed: [...tasks.completed, tasks.current[index]],
-      completedCount: tasks.completedCount + 1,
     });
+  console.log("cc:", tasks, task);
 
   return (
     <main>
       <h1>TaskFlow</h1>
-      <input value={task} onChange={(e) => setTask(e.target.value)} placeholder="Add a task" />
-      <button onClick={addTask}>Add</button>
+      <input
+        value={task}
+        onChange={(e) => setTask(e.target.value)}
+        placeholder="Add a task"
+      />
+      <br />
+      <button className="addBtn" onClick={addTask}>
+        Add
+      </button>
 
       {(["current", "backlog", "completed"] as const).map((list) => (
         <section key={list}>
-          <h2>{list.charAt(0).toUpperCase() + list.slice(1)}</h2>
+          <h2>
+            {list.charAt(0).toUpperCase() + list.slice(1)} ({tasks[list].length}
+            )
+          </h2>
           <ul>
-            {tasks[list].map((t, i) => (
-              <li key={i}>
-                {t}
+            {tasks[list].map((task, index) => (
+              <li key={index}>
+                {task}
                 {list !== "completed" && (
                   <div>
                     {list === "current" && (
                       <>
-                        <button onClick={() => moveTask("current", "backlog", i)}>→ Backlog</button>
-                        <button onClick={() => completeTask(i)}>✅ Done</button>
+                        <button
+                          className="actionBtn"
+                          onClick={() => moveTask("current", "backlog", index)}
+                        >
+                          → Backlog
+                        </button>
+                        <button
+                          className="actionBtn"
+                          onClick={() => completeTask(index)}
+                        >
+                          ✅ Done
+                        </button>
                       </>
                     )}
                     {list === "backlog" && (
-                      <button onClick={() => moveTask("backlog", "current", i)}>← Current</button>
+                      <button
+                        className="actionBtn"
+                        onClick={() => moveTask("backlog", "current", index)}
+                      >
+                        ← Current
+                      </button>
                     )}
                   </div>
                 )}
@@ -89,8 +109,6 @@ export default function Home() {
           </ul>
         </section>
       ))}
-
-      <h2>Completed Today: {tasks.completedCount}</h2>
     </main>
   );
 }
