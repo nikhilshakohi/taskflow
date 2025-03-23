@@ -1,21 +1,27 @@
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-  --item-background: #f7f7f7;
+  --background: #D6D6D6;
+  --foreground: #2E2E2E;
+  --item-background: #C4C4C4;
+  --nav-background: #AFAFAF;
+  --btn-background: #5A4FCF;
+  --btn-foreground: #FFFFFF;
+  --btn-hover: #4A40B5;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-    --item-background: #1a1a1a;
-  }
+[data-theme='dark'] {
+  --background: #404040;
+  --foreground: #E0E0E0;
+  --item-background: #505050;
+  --nav-background: #303030;
+  --btn-background: #6A5ACD;
+  --btn-foreground: #E0E0E0;
+  --btn-hover: #5848B1;
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, sans-serif;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 

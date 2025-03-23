@@ -11,11 +11,11 @@ export const TaskList = (props: ITaskList) => {
   const { type, tasks, moveTask, completeTask } = props;
   return (
     <section>
-      <h2>
-        {type.charAt(0).toUpperCase() + type.slice(1)} ({tasks[type].length})
+      <h2 className="heading">
+        {type.charAt(0).toUpperCase() + type.slice(1)} ({tasks[type]?.length})
       </h2>
       <ul>
-        {tasks[type].map((task, index) => (
+        {tasks[type]?.map((task, index) => (
           <li key={index}>
             {task}
             <TaskActions
