@@ -1,17 +1,11 @@
-main {
+.content {
   max-width: 400px;
   margin: 20px auto;
   padding: 10px;
-  font-family: Arial, sans-serif;
 }
 
-h1 {
-  text-align: center;
+.heading {
   margin-bottom: 15px;
-}
-
-h2 {
-  margin-top: 20px;
 }
 
 ul {
@@ -43,14 +37,14 @@ button {
   padding: 5px 10px;
   border: none;
   cursor: pointer;
-  background: #007bff;
-  color: white;
+  background: var(--btn-background);
+  color: var(--btn-foreground);
   border-radius: 4px;
   height: 40px;
 }
 
 button:hover {
-  background: #0056b3;
+  background: var(--btn-hover);
 }
 
 .addBtn {
