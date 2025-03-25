@@ -1,4 +1,7 @@
 .nav {
+    position: fixed;
+    width: 100%;
+    top: 0;
     background: var(--nav-background);
     display: flex;
     justify-content: space-between;
