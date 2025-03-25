@@ -2,8 +2,13 @@ export interface Itasks {
   current: string[];
   backlog: string[];
 }
+export interface INavBar {
+  theme: string | null;
+  setTheme: (value: string) => void;
+}
 
-export const parse = (str: string | null) => (str ? JSON.parse(str) : null);
+export const parse = (str: string | null | undefined) =>
+  str ? JSON.parse(str) : null;
 
 export const setLocal = (state: Record<string, unknown>) =>{
   if (typeof window !== "undefined")
